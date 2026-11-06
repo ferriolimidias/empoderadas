@@ -82,7 +82,7 @@
       position:relative;
       overflow:hidden;
       margin-bottom:16px;
-      padding:18px 18px 20px;
+      padding:15px 18px 16px;
       border:1px solid rgba(122,69,97,.12);
       border-radius:32px;
       background:linear-gradient(180deg, rgba(255,255,255,.66), rgba(255,248,244,.88));
@@ -112,7 +112,7 @@
     }
     .hero-grid{
       display:grid;
-      gap:8px;
+      gap:5px;
       justify-items:center;
       text-align:center;
     }
@@ -135,7 +135,7 @@
     }
     .brand-wrap{
       position:relative;
-      width:min(62vw, 260px);
+      width:min(49vw, 200px);
       aspect-ratio:1 / 1;
       margin-top:4px;
       display:grid;
@@ -277,11 +277,11 @@
       border-radius:30px;
       background:linear-gradient(145deg, rgba(190,127,147,.38), rgba(255,255,255,.52), rgba(240,194,176,.35));
       box-shadow:0 18px 42px rgba(100,47,70,.08);
-      transform:translate3d(0,18px,0);
-      opacity:0;
-      transition:transform .8s var(--ease), opacity .8s var(--ease);
+      transform:none;
+      opacity:1;
+      transition:transform .6s var(--ease);
     }
-    .card-shell.show{opacity:1;transform:translate3d(0,0,0)}
+    
     .card{
       --surface1:#6b3954;
       --surface2:#4f2940;
@@ -461,6 +461,7 @@
       white-space:nowrap;
     }
     .toast.show{opacity:1;transform:translate(-50%,0)}
+    @keyframes cardEnter{from{opacity:0;transform:translate3d(0,18px,0)}to{opacity:1;transform:translate3d(0,0,0)}}
     @keyframes brandFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
     @keyframes spinSlow{to{transform:rotate(360deg)}}
     @keyframes spinReverse{to{transform:rotate(-360deg)}}
@@ -470,10 +471,11 @@
     @media (prefers-reduced-motion:no-preference){
       .hero{animation:rise .8s var(--ease) both}
       .meta{animation:rise .8s .08s var(--ease) both}
-      .card-shell:nth-child(1){transition-delay:.08s}
-      .card-shell:nth-child(2){transition-delay:.15s}
-      .card-shell:nth-child(3){transition-delay:.22s}
-      .card-shell:nth-child(4){transition-delay:.29s}
+      .card-shell{animation:cardEnter .7s var(--ease) both}
+      .card-shell:nth-child(1){animation-delay:.1s}
+      .card-shell:nth-child(2){animation-delay:.18s}
+      .card-shell:nth-child(3){animation-delay:.26s}
+      .card-shell:nth-child(4){animation-delay:.34s}
       .hero-badges span:nth-child(2){animation:pulseSoft 4.2s ease-in-out infinite}
     }
     @media (prefers-reduced-motion:reduce){
@@ -507,12 +509,6 @@
         </div>
         <h1>Empoderadas</h1>
         <p>Sua nova versão começa aqui. Escolha sua profissional e fale direto pelo Instagram.</p>
-        <div class="hero-badges">
-          <span>Massoterapia</span>
-          <span>Tranças</span>
-          <span>Nail Design</span>
-          <span>Cachos</span>
-        </div>
       </div>
     </header>
 
@@ -577,20 +573,7 @@
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <script>
-    const observer = 'IntersectionObserver' in window ? new IntersectionObserver((entries)=>{
-      entries.forEach((entry)=>{
-        if(entry.isIntersecting){
-          entry.target.classList.add('show');
-          observer.unobserve(entry.target);
-        }
-      });
-    },{threshold:.12}) : null;
-
-    document.querySelectorAll('.card-shell').forEach((card, index)=>{
-      if(observer){ observer.observe(card); }
-      else { card.classList.add('show'); }
-    });
-
+    // Todos os cartões permanecem visíveis mesmo sem JavaScript.
     const pending = document.querySelector('[data-profissional="brenda"]');
     const toast = document.getElementById('toast');
     let toastTimer;
