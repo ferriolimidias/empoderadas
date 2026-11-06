@@ -718,6 +718,11 @@
       .desc{font-size:11px}
       .action{width:39px;height:39px;flex-basis:39px}
     }
+
+    /* Recorte inferior controlado: a imagem pode sobressair pelo topo, nunca invadir o próximo link. */
+    .visual {clip-path:inset(-32px -10px 0 -10px)}
+    .card--angela:hover .visual img,
+    .card--angela:focus-visible .visual img {transform:scale(3.38) translateY(9%)}
     @media (hover:none),(pointer:coarse){
       .card{transition:transform .18s var(--ease),box-shadow .18s var(--ease)}
       .card:active{transform:scale(.982)}
