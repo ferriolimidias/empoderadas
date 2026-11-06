@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#f7f1e9" />
+  <title>Empoderadas | Espaço de Beleza</title>
+  <meta name="description" content="Empoderadas Espaço de Beleza. Escolha sua profissional: massoterapia, tranças, unhas e cachos." />
+  <meta property="og:title" content="Empoderadas | Espaço de Beleza" />
+  <meta property="og:description" content="Sua nova versão começa aqui. Escolha sua profissional." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root { --bg:#f7f1e9;--wine:#542b46;--ink:#4a2b3d;--rose:#b77181;--muted:#846f72;--border:#e9d9d2;--cream:#fffaf5;--ease:cubic-bezier(.2,.74,.2,1);font-synthesis:none; }
+    * { box-sizing:border-box }
+    html { scroll-behavior:smooth }
+    body { margin:0; min-width:320px; color:var(--ink); background:var(--bg); font-family:'DM Sans',sans-serif; -webkit-font-smoothing:antialiased; }
+    body::before {content:"";pointer-events:none;position:fixed;inset:0;background:radial-gradient(ellipse 75% 29% at 51% -8%,rgba(231,191,185,.34),transparent 90%),radial-gradient(ellipse 45% 20% at 98% 83%,rgba(222,185,174,.16),transparent);z-index:0}
+    button { font:inherit; }
+    .wrap { position:relative; z-index:1; width:min(100% - 32px,476px); margin:0 auto; padding:20px 0 26px; }
+    .intro {display:flex;flex-direction:column;align-items:center;text-align:center}
+    .topline {font-size:10px;letter-spacing:.3em;font-weight:800;color:#996a74;display:flex;align-items:center;gap:10px;text-transform:uppercase}
+    .topline::before,.topline::after{content:"";width:20px;height:1px;background:#c9a5a6}
+    .brand {display:block;width:clamp(188px,51vw,232px);height:auto;max-height:218px;object-fit:contain;margin:0 auto -2px;filter:drop-shadow(0 7px 16px rgba(125,55,66,.06));}
+    .tagline {color:#a25c73;font-family:'Playfair Display',Georgia,serif;font-weight:600;font-size:17px;letter-spacing:.02em;margin:-4px 0 23px}
+    .section-head {display:flex;align-items:center;justify-content:space-between;gap:8px;margin:0 1px 13px;}
+    .section-head h1{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.18em;margin:0;color:#86636a}
+    .section-head span{font-weight:800;color:#a56f7a;display:flex;align-items:center;gap:7px;font-size:10px;letter-spacing:.08em}
+    .section-head span::before{content:"";display:block;width:27px;height:1px;background:#cdabb1}
+    .list {display:grid;gap:11px;}
+    .link {--surface:#623950;--accent:#dfa0ac;position:relative;isolation:isolate;display:flex;align-items:center;width:100%;height:112px;padding:0 16px 0 0;overflow:hidden;text-align:left;color:#fff7f2;background:linear-gradient(113deg,var(--surface),#45283c);border:1px solid rgba(96,44,66,.2);border-radius:19px;box-shadow:0 6px 16px rgba(83,37,58,.11),0 1px 2px rgba(83,37,58,.06);cursor:pointer;transition:transform .35s var(--ease),box-shadow .35s var(--ease),border-color .35s var(--ease);-webkit-tap-highlight-color:transparent;transform:translateZ(0);}
+    .link::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(104deg,rgba(255,255,255,.15) 0%,rgba(255,255,255,0) 27%,rgba(245,174,185,.11) 100%);}
+    .link::after{content:"";position:absolute;inset:-25% auto -25% -40%;width:36%;pointer-events:none;background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent);transform:skewX(-23deg) translateX(-170%);transition:transform .7s var(--ease);}
+    .link--angela {--surface:#79394d;--accent:#efadc2;}
+    .link--sane {--surface:#71445b;--accent:#fad8c0;}
+    .link--brenda {--surface:#623649;--accent:#eac1a3;}
+    .portrait{position:relative;align-self:stretch;flex:0 0 108px;width:108px;overflow:hidden;pointer-events:none;}
+    .portrait::before{content:"";position:absolute;z-index:0;width:99px;height:99px;left:5px;bottom:-7px;border-radius:50%;background:radial-gradient(circle at 40% 25%,rgba(255,255,255,.37),rgba(246,177,181,.12) 60%,rgba(255,255,255,.05) 72%);box-shadow:inset 0 1px 0 rgba(255,255,255,.2);}
+    .portrait img{position:absolute;z-index:1;display:block;max-width:none;object-fit:contain;object-position:center bottom;pointer-events:none;transition:transform .36s var(--ease);}
+    .link--nilce .portrait img{width:106px;height:113px;left:1px;bottom:-1px;}
+    .link--angela .portrait img{width:112px;height:114px;left:-1px;bottom:0;transform:scale(3.35) translateY(9%);}
+    .link--sane .portrait img{width:106px;height:109px;left:2px;bottom:0;}
+    .link--brenda .portrait img{width:117px;height:118px;left:-1px;bottom:-3px;}
+    .copy{display:block;position:relative;z-index:1;min-width:0;flex:1;margin-left:3px;margin-right:10px;padding-top:1px;}
+    .category{display:block;font-size:9px;letter-spacing:.13em;line-height:1.35;font-weight:800;color:var(--accent);text-transform:uppercase;margin-bottom:3px;}
+    .name{display:block;font-family:'Playfair Display',Georgia,serif;font-weight:700;line-height:1.03;font-size:26px;letter-spacing:-.02em;margin-bottom:6px;}
+    .description{display:block;color:#f4dfe0;font-size:11px;line-height:1.32;font-weight:500;max-width:204px;}
+    .arrow{display:grid;position:relative;z-index:1;place-items:center;flex:0 0 35px;width:35px;height:35px;background:#fff5ec;border:1px solid rgba(255,255,255,.6);color:var(--surface);border-radius:50%;font-size:22px;font-family:Arial,sans-serif;line-height:1;box-shadow:0 2px 6px rgba(45,15,25,.13);transition:transform .3s var(--ease),background-color .3s var(--ease),color .3s var(--ease);}
+    .arrow svg{width:17px;height:17px;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;fill:none;transition:transform .3s var(--ease);}
+    .link:focus-visible{outline:3px solid #ca7891;outline-offset:4px;}
+    .link:active{transform:scale(.987);box-shadow:0 2px 7px rgba(83,37,58,.12);}
+    .link:active .arrow{background:#f9d7db;}
+    .foot {text-align:center;margin:24px 0 0;color:#a17e82;font-size:10px;letter-spacing:.05em;line-height:1.6;}
+    .foot strong{color:#875e6c;font-weight:700}
+    .toast {position:fixed;z-index:10;left:50%;bottom:max(20px,env(safe-area-inset-bottom));transform:translate(-50%,18px);opacity:0;pointer-events:none;background:#3f2737;color:white;border-radius:999px;padding:12px 21px;max-width:calc(100vw - 24px);white-space:nowrap;font-size:12px;font-weight:700;box-shadow:0 10px 32px rgba(48,22,36,.2);transition:transform .25s ease,opacity .25s ease;}
+    .toast.show{opacity:1;transform:translate(-50%,0);}
+    @media (hover:hover) and (pointer:fine) {
+      .link:hover{transform:translateY(-3px);box-shadow:0 14px 24px rgba(83,37,58,.2),0 2px 5px rgba(83,37,58,.08);}
+      .link:hover::after{transform:skewX(-23deg) translateX(680%);}
+      .link:hover .arrow{transform:scale(1.08);background:white;}
+      .link:hover .arrow svg{transform:translate(2px,-2px)}
+      .link--nilce:hover .portrait img,.link--sane:hover .portrait img,.link--brenda:hover .portrait img{transform:scale(1.06)}
+      .link--angela:hover .portrait img{transform:scale(3.5) translateY(9%)}
+    }
+    @keyframes rise {from{opacity:0;transform:translate3d(0,15px,0)}to{opacity:1;transform:translate3d(0,0,0)}}
+    @media (prefers-reduced-motion:no-preference){.intro{animation:rise .65s var(--ease) both}.link{animation:rise .65s var(--ease) both}.link:nth-child(1){animation-delay:.1s}.link:nth-child(2){animation-delay:.18s}.link:nth-child(3){animation-delay:.26s}.link:nth-child(4){animation-delay:.34s}}
+    @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+    @media (max-width:369px){.wrap{width:calc(100% - 24px)}.link{height:105px;padding-right:11px;border-radius:17px}.portrait{flex-basis:91px;width:91px}.portrait::before{width:86px;height:86px;left:3px}.link--nilce .portrait img,.link--sane .portrait img{width:92px;height:106px}.link--angela .portrait img{width:94px;height:106px}.link--brenda .portrait img{width:99px;height:110px}.copy{margin-right:5px}.name{font-size:23px}.description{font-size:10px}.arrow{flex-basis:30px;width:30px;height:30px}.arrow svg{width:15px;height:15px}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="intro">
+      <div class="topline">Um espaço de mulheres</div>
+      <img class="brand" src="https://xn--espaoempoderadas-fpb.my.canva.site/_assets/media/73197b566b8f3f0024553dd1ca2663fa.png" alt="Empoderadas Espaço de Beleza" width="800" height="800" fetchpriority="high" />
+      <p class="tagline">Sua nova versão começa aqui.</p>
+    </header>
+    <main>
+      <div class="section-head"><h1>Conheça nossas profissionais</h1><span>04 conexões</span></div>
+      <div class="list" aria-label="Profissionais do Empoderadas">
+        <button class="link link--nilce" type="button" data-profissional="nilce" aria-label="Conheça Nilce — massoterapia e bem-estar">
+          <span class="portrait"><img src="https://xn--espaoempoderadas-fpb.my.canva.site/_assets/media/b855a6d4c635f02ced5c0be30073207d.png" alt="" loading="eager" width="574" height="774" /></span>
+          <span class="copy"><span class="category">Massoterapia &amp; bem-estar</span><span class="name">Nilce</span><span class="description">Um momento de pausa e cuidado.</span></span>
+          <span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 18 18 6M7 6h11v11" /></svg></span>
+        </button>
+        <button class="link link--angela" type="button" data-profissional="angela" aria-label="Conheça Ângela — tranças e estilo">
+          <span class="portrait"><img src="https://xn--espaoempoderadas-fpb.my.canva.site/_assets/media/cae56d1fb0c259c1a5689c6a1204e6bd.png" alt="" loading="eager" /></span>
+          <span class="copy"><span class="category">Tranças &amp; estilo</span><span class="name">Ângela</span><span class="description">Tranças que expressam quem você é.</span></span>
+          <span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 18 18 6M7 6h11v11" /></svg></span>
+        </button>
+        <button class="link link--sane" type="button" data-profissional="sane" aria-label="Conheça Sane — nail design">
+          <span class="portrait"><img src="https://xn--espaoempoderadas-fpb.my.canva.site/_assets/media/eb1c2739ebca9d0c7bbcdd92fa933360.png" alt="" loading="eager" /></span>
+          <span class="copy"><span class="category">Nail design</span><span class="name">Sane</span><span class="description">Unhas feitas, autoestima renovada.</span></span>
+          <span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 18 18 6M7 6h11v11" /></svg></span>
+        </button>
+        <button class="link link--brenda" type="button" data-profissional="brenda" aria-label="Conheça Brenda — cabelos cacheados">
+          <span class="portrait"><img src="https://xn--espaoempoderadas-fpb.my.canva.site/_assets/media/e367347f199df254cf62903c75b7ec28.png" alt="" loading="eager" /></span>
+          <span class="copy"><span class="category">Cachos &amp; identidade</span><span class="name">Brenda</span><span class="description">Valorize a força dos seus cachos.</span></span>
+          <span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 18 18 6M7 6h11v11" /></svg></span>
+        </button>
+      </div>
+    </main>
+    <footer class="foot"><strong>EMPODERADAS</strong> · Espaço de Beleza · Caxias do Sul</footer>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script>
+    // Preencha com os links finais, mantendo o https://. Enquanto vazio, o botão informa que o link está chegando.
+    const LINKS = Object.freeze({nilce:'',angela:'',sane:'',brenda:''});
+    const toast = document.querySelector('#toast');
+    let toastTimeout;
+    document.querySelectorAll('[data-profissional]').forEach(button=>{
+      button.addEventListener('click',()=>{
+        const key=button.dataset.profissional;
+        const url=LINKS[key];
+        if(url && /^https:\/\//i.test(url)){window.open(url,'_blank','noopener,noreferrer');return;}
+        const nome=button.querySelector('.name').textContent;
+        toast.textContent='O link de '+nome+' será adicionado em breve.';
+        toast.classList.add('show');
+        clearTimeout(toastTimeout);
+        toastTimeout=setTimeout(()=>toast.classList.remove('show'),3000);
+      });
+    });
+  </script>
+</body>
+</html>
