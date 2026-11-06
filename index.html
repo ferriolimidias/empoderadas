@@ -30,7 +30,7 @@
     .section-head span{font-weight:800;color:#a56f7a;display:flex;align-items:center;gap:7px;font-size:10px;letter-spacing:.08em}
     .section-head span::before{content:"";display:block;width:27px;height:1px;background:#cdabb1}
     .list {display:grid;gap:11px;}
-    .link {--surface:#623950;--accent:#dfa0ac;position:relative;isolation:isolate;display:flex;align-items:center;width:100%;height:112px;padding:0 16px 0 0;overflow:hidden;text-align:left;color:#fff7f2;background:linear-gradient(113deg,var(--surface),#45283c);border:1px solid rgba(96,44,66,.2);border-radius:19px;box-shadow:0 6px 16px rgba(83,37,58,.11),0 1px 2px rgba(83,37,58,.06);cursor:pointer;transition:transform .35s var(--ease),box-shadow .35s var(--ease),border-color .35s var(--ease);-webkit-tap-highlight-color:transparent;transform:translateZ(0);}
+    .link {text-decoration:none;--surface:#623950;--accent:#dfa0ac;position:relative;isolation:isolate;display:flex;align-items:center;width:100%;height:112px;padding:0 16px 0 0;overflow:hidden;text-align:left;color:#fff7f2;background:linear-gradient(113deg,var(--surface),#45283c);border:1px solid rgba(96,44,66,.2);border-radius:19px;box-shadow:0 6px 16px rgba(83,37,58,.11),0 1px 2px rgba(83,37,58,.06);cursor:pointer;transition:transform .35s var(--ease),box-shadow .35s var(--ease),border-color .35s var(--ease);-webkit-tap-highlight-color:transparent;transform:translateZ(0);}
     .link::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(104deg,rgba(255,255,255,.15) 0%,rgba(255,255,255,0) 27%,rgba(245,174,185,.11) 100%);}
     .link::after{content:"";position:absolute;inset:-25% auto -25% -40%;width:36%;pointer-events:none;background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent);transform:skewX(-23deg) translateX(-170%);transition:transform .7s var(--ease);}
     .link--angela {--surface:#79394d;--accent:#efadc2;}
@@ -80,21 +80,21 @@
     <main>
       <div class="section-head"><h1>Conheça nossas profissionais</h1><span>04 conexões</span></div>
       <div class="list" aria-label="Profissionais do Empoderadas">
-        <button class="link link--nilce" type="button" data-profissional="nilce" aria-label="Conheça Nilce — massoterapia e bem-estar">
+        <a class="link link--nilce" href="https://www.instagram.com/nilcemassagemeterapia/" target="_blank" rel="noopener noreferrer" aria-label="Conheça Nilce — massoterapia e bem-estar">
           <span class="portrait"><img src="assets/nilce.png" alt="" loading="eager" width="600" height="800" /></span>
           <span class="copy"><span class="category">Massoterapia &amp; bem-estar</span><span class="name">Nilce</span><span class="description">Um momento de pausa e cuidado.</span></span>
           <span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 18 18 6M7 6h11v11" /></svg></span>
-        </button>
-        <button class="link link--angela" type="button" data-profissional="angela" aria-label="Conheça Ângela — tranças e estilo">
+        </a>
+        <a class="link link--angela" href="https://www.instagram.com/glamurosas_trancas/" target="_blank" rel="noopener noreferrer" aria-label="Conheça Ângela — tranças e estilo">
           <span class="portrait"><img src="https://xn--espaoempoderadas-fpb.my.canva.site/_assets/media/cae56d1fb0c259c1a5689c6a1204e6bd.png" alt="" loading="eager" /></span>
           <span class="copy"><span class="category">Tranças &amp; estilo</span><span class="name">Ângela</span><span class="description">Tranças que expressam<br>quem você é.</span></span>
           <span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 18 18 6M7 6h11v11" /></svg></span>
-        </button>
-        <button class="link link--sane" type="button" data-profissional="sane" aria-label="Conheça Sane — nail design">
+        </a>
+        <a class="link link--sane" href="https://www.instagram.com/sane.fnails/" target="_blank" rel="noopener noreferrer" aria-label="Conheça Sane — nail design">
           <span class="portrait"><img src="https://xn--espaoempoderadas-fpb.my.canva.site/_assets/media/eb1c2739ebca9d0c7bbcdd92fa933360.png" alt="" loading="eager" /></span>
           <span class="copy"><span class="category">Nail design</span><span class="name">Sane</span><span class="description">Unhas feitas, autoestima renovada.</span></span>
           <span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 18 18 6M7 6h11v11" /></svg></span>
-        </button>
+        </a>
         <button class="link link--brenda" type="button" data-profissional="brenda" aria-label="Conheça Brenda — cabelos cacheados">
           <span class="portrait"><img src="assets/brenda.png" alt="" loading="eager" /></span>
           <span class="copy"><span class="category">Cachos &amp; identidade</span><span class="name">Brenda</span><span class="description">Valorize a força dos seus cachos.</span></span>
@@ -106,21 +106,14 @@
   </div>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <script>
-    // Preencha com os links finais, mantendo o https://. Enquanto vazio, o botão informa que o link está chegando.
-    const LINKS = Object.freeze({nilce:'',angela:'',sane:'',brenda:''});
+    // Brenda: aguarda o link final para ativar seu botão.
     const toast = document.querySelector('#toast');
     let toastTimeout;
-    document.querySelectorAll('[data-profissional]').forEach(button=>{
-      button.addEventListener('click',()=>{
-        const key=button.dataset.profissional;
-        const url=LINKS[key];
-        if(url && /^https:\/\//i.test(url)){window.open(url,'_blank','noopener,noreferrer');return;}
-        const nome=button.querySelector('.name').textContent;
-        toast.textContent='O link de '+nome+' será adicionado em breve.';
-        toast.classList.add('show');
-        clearTimeout(toastTimeout);
-        toastTimeout=setTimeout(()=>toast.classList.remove('show'),3000);
-      });
+    document.querySelector('[data-profissional="brenda"]').addEventListener('click',()=>{
+      toast.textContent='O link de Brenda será adicionado em breve.';
+      toast.classList.add('show');
+      clearTimeout(toastTimeout);
+      toastTimeout=setTimeout(()=>toast.classList.remove('show'),3000);
     });
   </script>
 </body>
