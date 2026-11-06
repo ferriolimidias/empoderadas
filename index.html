@@ -593,34 +593,153 @@
       .action{width:42px;height:42px}
       .action svg{width:16px;height:16px}
     }
+  
+    /* Edição Beauty Editorial: nenhuma alteração ou recorte no arquivo da logo original. */
+    .hero {
+      padding: 21px 20px 23px;
+      margin-bottom: 18px;
+      border: 1px solid rgba(158,105,120,.19);
+      border-radius: 30px;
+      background:
+        radial-gradient(ellipse 85% 55% at 50% -12%,rgba(255,255,255,.92),transparent),
+        linear-gradient(145deg,#fbf4ed 0%,#f8eee9 62%,#f6e7e4 100%);
+      box-shadow: 0 25px 56px rgba(97,49,72,.11),0 1px 0 rgba(255,255,255,.82) inset;
+    }
+    .hero-grid { gap: 2px; }
+    .hero-accent { position:absolute; width:90px;height:90px;pointer-events:none;opacity:.58; }
+    .hero-accent--left {left:-14px;top:22px;border-left:1px solid #d8adba;border-top:1px solid #d8adba;border-radius:60px 0 0 0}
+    .hero-accent--right {right:-18px;bottom:28px;border-right:1px solid #d8adba;border-bottom:1px solid #d8adba;border-radius:0 0 60px 0}
+    .kicker {color:#936377;letter-spacing:.19em;font-size:9px;white-space:normal;line-height:1.45;justify-content:center}
+    .kicker::before,.kicker::after {width:17px;flex:0 0 17px}
+    .brand-stage {
+      position:relative;isolation:isolate;
+      width:min(59vw,230px);margin:7px auto 4px;
+      padding:6px;
+      display:grid;place-items:center;
+      animation:stageReveal .85s var(--ease) both;
+    }
+    .brand-stage::before,.brand-stage::after{
+      content:"";position:absolute;pointer-events:none;border-radius:50%;
+    }
+    .brand-stage::before {inset:-10px;background:radial-gradient(circle,rgba(247,200,204,.56),transparent 69%);filter:blur(9px);z-index:-2;animation:ambientBreath 8s ease-in-out infinite}
+    .brand-stage::after {inset:-10px;border:1px solid rgba(200,143,158,.35);border-left-color:transparent;border-right-color:transparent;z-index:-1;animation:ringTurn 28s linear infinite}
+    .brand-ambient{
+      position:absolute;inset:-20px;z-index:-1;pointer-events:none;
+      border:1px dotted rgba(202,147,161,.26);border-radius:50%;
+      animation:ringTurn 40s linear infinite reverse;
+    }
+    .brand-ambient::before,.brand-ambient::after {content:"";position:absolute;border-radius:50%;background:#f1c6cb;box-shadow:0 0 16px rgba(220,167,178,.4)}
+    .brand-ambient::before {width:7px;height:7px;left:9%;top:15%}
+    .brand-ambient::after {width:6px;height:6px;right:5%;bottom:22%;background:#f2d5bc}
+    .logo-original{
+      display:block;width:100%;height:auto;aspect-ratio:1/1;object-fit:contain;
+      position:relative;z-index:1;max-width:100%;
+      border-radius:24px;
+      /* Sem filtros, máscaras, blend modes ou transformações sobre a marca. */
+    }
+    .hero .tagline {
+      margin:8px 0 0;
+      color:#693a54;
+      font-family:'Playfair Display',Georgia,serif;
+      font-size:clamp(19px,5vw,24px);
+      line-height:1.25;font-weight:600;
+      letter-spacing:-.025em;
+    }
+    .hero .support {margin:5px 0 0;font-size:12px;line-height:1.5;color:#9b7782}
+    .meta{margin:18px 5px 12px}
+    .stack{gap:16px}
+    .card-shell{
+      border-radius:29px;padding:1px;
+      background:linear-gradient(110deg,rgba(254,241,232,.7),rgba(210,154,173,.7),rgba(244,208,183,.75),rgba(255,245,238,.85));
+      background-size:230% 230%;
+      animation:cardEnter .65s var(--ease) both, satinBorder 11s ease-in-out infinite;
+      box-shadow:0 13px 26px rgba(90,42,66,.12),0 2px 8px rgba(90,42,66,.04);
+      transition:filter .32s var(--ease);
+    }
+    .card-shell:nth-child(1) {animation-delay: .08s,-2s}
+    .card-shell:nth-child(2) {animation-delay: .16s,-4s}
+    .card-shell:nth-child(3) {animation-delay: .24s,-6s}
+    .card-shell:nth-child(4) {animation-delay: .32s,-8s}
+    .card{
+      --pointer-x:22%;--pointer-y:38%;
+      overflow:visible;min-height:128px;border-radius:28px;
+      background:
+        radial-gradient(circle at var(--pointer-x) var(--pointer-y),rgba(255,255,255,.13),transparent 52%),
+        linear-gradient(115deg,var(--surface1),var(--surface2));
+      box-shadow:0 7px 22px rgba(69,25,47,.18);
+      transition:transform .32s var(--ease),box-shadow .32s var(--ease),background-position .4s var(--ease);
+    }
+    .card::before{border-radius:inherit;background:linear-gradient(125deg,rgba(255,255,255,.13),transparent 50%,rgba(255,255,255,.04))}
+    .card::after{animation:none;opacity:0;clip-path:inset(0 round 27px);transition:transform .85s var(--ease),opacity .55s var(--ease)}
+    .card:hover::after,.card:focus-visible::after{transform:skewX(-20deg) translateX(620%);opacity:.72}
+    .card--nilce{--surface1:#75435d;--surface2:#502b42}
+    .card--angela{--surface1:#87485f;--surface2:#5c2e48}
+    .card--sane{--surface1:#74546b;--surface2:#56364c}
+    .card--brenda{--surface1:#73516a;--surface2:#54344b}
+    .visual{overflow:visible}
+    .visual::before{width:122px;height:122px;left:-5px;bottom:-7px;box-shadow:inset 0 1px 1px rgba(255,255,255,.26),0 0 25px rgba(242,189,198,.1)}
+    .visual img{
+      translate:var(--portrait-x,0px) var(--portrait-y,0px);
+      transition:translate .32s var(--ease), transform .42s var(--ease), filter .42s var(--ease);
+      filter:drop-shadow(0 12px 13px rgba(21,6,15,.22));
+    }
+    .card--nilce .visual img{width:118px;height:133px;bottom:-2px;left:-1px}
+    .card--angela .visual img{width:115px;height:132px;left:0;bottom:-1px;transform:scale(3.25) translateY(9%)}
+    .card--sane .visual img{width:116px;height:127px;left:0;bottom:-1px}
+    .card--brenda .visual img{width:125px;height:134px;left:-3px;bottom:-1px}
+    .copy{padding:13px 7px 13px 8px}
+    .eyebrow{font-size:9px;letter-spacing:.14em}
+    .name{font-size:clamp(31px,7.2vw,39px);margin-bottom:5px}
+    .desc{line-height:1.32;font-size:12px}
+    .mini-cta{margin-top:8px;color:#f9d1d2}
+    .mini-cta::after{width:14px}
+    .action{
+      width:43px;height:43px;flex-basis:43px;
+      border:1px solid rgba(255,255,255,.77);
+      background:linear-gradient(145deg,#fffaf3,#f5e4df);
+      box-shadow:0 3px 4px rgba(44,17,33,.1),0 11px 21px rgba(32,8,21,.14);
+    }
+    .card:hover .action,.card:focus-visible .action{background:linear-gradient(145deg,#fff,#fdeef0)}
+    @keyframes stageReveal {from{opacity:.15;transform:translate3d(0,12px,0) scale(.96)}to{opacity:1;transform:translate3d(0,0,0) scale(1)}}
+    @keyframes ringTurn {to{transform:rotate(360deg)}}
+    @keyframes ambientBreath {0%,100%{opacity:.75;transform:scale(.98)}50%{opacity:1;transform:scale(1.05)}}
+    @keyframes satinBorder {0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+    @media(max-width:390px){
+      .hero{padding:19px 12px 21px}
+      .brand-stage{width:min(57vw,213px);margin-top:8px}
+      .card{grid-template-columns:105px 1fr auto;min-height:125px;padding-right:10px}
+      .card--nilce .visual img{width:109px;height:124px}
+      .card--angela .visual img{width:105px;height:125px}
+      .card--sane .visual img{width:105px;height:121px}
+      .card--brenda .visual img{width:115px;height:127px}
+      .copy{padding:12px 5px 12px 6px}
+      .name{font-size:29px}
+      .eyebrow{font-size:8.3px;letter-spacing:.11em}
+      .desc{font-size:11px}
+      .action{width:39px;height:39px;flex-basis:39px}
+    }
+    @media (hover:none),(pointer:coarse){
+      .card{transition:transform .18s var(--ease),box-shadow .18s var(--ease)}
+      .card:active{transform:scale(.982)}
+    }
+    @media(prefers-reduced-motion:reduce){
+      .brand-stage,.brand-stage::before,.brand-stage::after,.brand-ambient,.card-shell{animation:none!important}
+    }
   </style>
 </head>
 <body>
   <div class="page">
     <header class="hero">
-      <span class="sparkle s1"></span>
-      <span class="sparkle s2"></span>
-      <span class="sparkle s3"></span>
-      <span class="sparkle s4"></span>
-
+      <span class="hero-accent hero-accent--left" aria-hidden="true"></span>
+      <span class="hero-accent hero-accent--right" aria-hidden="true"></span>
       <div class="hero-grid">
-        <div class="kicker">Um espaço de mulheres</div>
-
-        <div class="brand-wrap" aria-hidden="true">
-          <span class="brand-halo"></span>
-          <span class="brand-ring"></span>
-          <div class="brand-mask">
-            <img src="https://xn--espaoempoderadas-fpb.my.canva.site/_assets/media/73197b566b8f3f0024553dd1ca2663fa.png" alt="Empoderadas Espaço de Beleza" fetchpriority="high" />
-          </div>
+        <div class="kicker">Mais que beleza, um espaço de mulheres</div>
+        <div class="brand-stage">
+          <span class="brand-ambient" aria-hidden="true"></span>
+          <img class="logo-original" src="https://xn--espaoempoderadas-fpb.my.canva.site/_assets/media/73197b566b8f3f0024553dd1ca2663fa.png" alt="Empoderadas Espaço de Beleza" width="800" height="800" fetchpriority="high" />
         </div>
-
-        <h1>Empoderadas</h1>
-        <p>Sua nova versão começa aqui. Escolha sua profissional e fale direto pelo Instagram.</p>
-        <div class="hero-mini" aria-hidden="true">
-          <span>Beleza</span>
-          <span>Cuidado</span>
-          <span>Identidade</span>
-        </div>
+        <p class="tagline">Sua nova versão começa aqui.</p>
+        <p class="support">Escolha quem combina com o seu momento.</p>
       </div>
     </header>
 
@@ -689,6 +808,35 @@
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <script>
+
+    // Spotlight e microparallax leves, somente para mouse e sem afetar a navegação.
+    if(window.matchMedia('(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference)').matches){
+      document.querySelectorAll('.card').forEach(card=>{
+        let pendingFrame=0;
+        card.addEventListener('pointermove',event=>{
+          if(pendingFrame)return;
+          pendingFrame=requestAnimationFrame(()=>{
+            const rect=card.getBoundingClientRect();
+            const x=Math.min(1,Math.max(0,(event.clientX-rect.left)/rect.width));
+            const y=Math.min(1,Math.max(0,(event.clientY-rect.top)/rect.height));
+            card.style.setProperty('--pointer-x',Math.round(x*100)+'%');
+            card.style.setProperty('--pointer-y',Math.round(y*100)+'%');
+            card.style.setProperty('--portrait-x',((x-.5)*7).toFixed(1)+'px');
+            card.style.setProperty('--portrait-y',((y-.5)*4).toFixed(1)+'px');
+            pendingFrame=0;
+          });
+        },{passive:true});
+        card.addEventListener('pointerleave',()=>{
+          if(pendingFrame)cancelAnimationFrame(pendingFrame);
+          pendingFrame=0;
+          card.style.removeProperty('--pointer-x');
+          card.style.removeProperty('--pointer-y');
+          card.style.removeProperty('--portrait-x');
+          card.style.removeProperty('--portrait-y');
+        });
+      });
+    }
+
     const pending = document.querySelector('[data-profissional="brenda"]');
     const toast = document.getElementById('toast');
     let toastTimer;
