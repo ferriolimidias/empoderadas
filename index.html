@@ -151,15 +151,73 @@ body::before{content:"";pointer-events:none;position:fixed;inset:0;background-im
   *,*::before,*::after{animation:none!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
   .card-frame{opacity:1;transform:none}
 }
+
+/* ATMOSFERA ROSÉ GOLD: efeitos decorativos sem interferir na marca, nos links ou na navegação */
+.scene{isolation:isolate}
+.ambient-particles{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1;opacity:.83}
+.scene__ribbons{position:absolute;inset:0;width:100%;height:100%;z-index:0;overflow:visible;pointer-events:none;opacity:.58}
+.scene__ribbon{fill:none;stroke-width:1.25;stroke-linecap:round;stroke-dasharray:420 1800;stroke-dashoffset:550;animation:ribbonFlow 29s linear infinite}
+.scene__ribbon--two{stroke-width:.9;stroke-dasharray:320 2100;stroke-dashoffset:900;animation-duration:36s;animation-delay:-13s}
+.scene__ribbon--three{stroke-width:.7;stroke-dasharray:180 2200;stroke-dashoffset:300;animation-duration:43s;animation-delay:-21s}
+.scene__scroll-wash{position:absolute;left:10%;top:13%;width:80%;height:63%;border-radius:50%;background:radial-gradient(ellipse at 50% 50%,rgba(237,169,161,.13),rgba(229,159,183,.035) 43%,transparent 70%);filter:blur(24px);transform:translate3d(0,var(--scroll-wash-y,0px),0);opacity:var(--scroll-wash-opacity,.65);transition:opacity .45s ease;z-index:0;pointer-events:none;will-change:transform}
+.logo-frame__aura{position:absolute;inset:-27px;z-index:0;pointer-events:none;border-radius:47%;background:radial-gradient(circle,rgba(248,192,174,.27) 9%,rgba(224,137,162,.15) 37%,transparent 72%);filter:blur(10px);animation:logoAura 7s ease-in-out infinite}
+.logo-frame__aura::after{content:"";position:absolute;inset:10px;border-radius:46px;border:1px solid rgba(255,219,195,.23);box-shadow:0 0 24px rgba(238,177,162,.08)}
+.logo-frame__paper{z-index:1}
+/* Um pequeno brilho se desloca ao redor das bordas; não há partículas sobre as fotos. */
+.card-frame::after{content:"✦";position:absolute;right:20px;top:-8px;font-family:Georgia,serif;font-size:14px;line-height:1;color:#ffe2c3;opacity:0;z-index:3;text-shadow:0 0 9px rgba(255,237,214,.72);pointer-events:none;animation:edgeSpark 11s ease-in-out infinite}
+.card-frame:nth-child(2)::after{animation-delay:-3s}
+.card-frame:nth-child(3)::after{animation-delay:-6s}
+.card-frame:nth-child(4)::after{animation-delay:-9s}
+.card-frame::before{background-size:320% 320%;animation:satin 12s ease-in-out infinite}
+.person-card:active .card-arrow{transform:scale(.92);box-shadow:0 2px 7px rgba(104,53,81,.12)}
+@keyframes ribbonFlow{to{stroke-dashoffset:-2200}}
+@keyframes logoAura{0%,100%{opacity:.5;transform:scale(.97)}50%{opacity:.93;transform:scale(1.045)}}
+@keyframes edgeSpark{0%,13%,21%,100%{opacity:0;transform:translateY(6px) scale(.7)}16%,18%{opacity:1;transform:translateY(0) scale(1.18)}}
+@media(max-width:600px){
+  .scene__ribbons{opacity:.44}
+  .scene__ribbon{stroke-width:.9}
+  .scene__scroll-wash{filter:blur(30px)}
+  .logo-frame__aura{inset:-22px}
+  .ambient-particles{opacity:.75}
+}
+@media(prefers-reduced-motion:reduce){
+  .scene__ribbon,.logo-frame__aura,.card-frame::after{animation:none!important}
+  .ambient-particles{display:none!important}
+  .scene__scroll-wash{transform:none!important}
+  .card-frame::after{opacity:0!important}
+}
 </style></head>
 <body>
-  <div class="scene" aria-hidden="true"><span class="scene__glow scene__glow--one"></span><span class="scene__glow scene__glow--two"></span><span class="scene__line"></span></div>
+  <div class="scene" aria-hidden="true">
+    <span class="scene__glow scene__glow--one"></span>
+    <span class="scene__glow scene__glow--two"></span>
+    <span class="scene__line"></span>
+    <span class="scene__scroll-wash"></span>
+    <svg class="scene__ribbons" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice" focusable="false">
+      <defs>
+        <linearGradient id="ambient-rose-line" x1="0" x2="1" y1="0" y2="0">
+          <stop offset="0%" stop-color="#d79ca5" stop-opacity="0"/>
+          <stop offset="44%" stop-color="#f1c4b1" stop-opacity=".5"/>
+          <stop offset="100%" stop-color="#d59dba" stop-opacity="0"/>
+        </linearGradient>
+        <linearGradient id="ambient-gold-line" x1="0" x2="1" y1="0" y2="0">
+          <stop offset="0%" stop-color="#ecc4aa" stop-opacity="0"/>
+          <stop offset="52%" stop-color="#f7d6ba" stop-opacity=".48"/>
+          <stop offset="100%" stop-color="#e7a2be" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <path class="scene__ribbon" stroke="url(#ambient-rose-line)" d="M -200 640 C 180 130, 520 220, 810 490 S 1290 880, 1820 240"/>
+      <path class="scene__ribbon scene__ribbon--two" stroke="url(#ambient-gold-line)" d="M -150 80 C 230 660, 710 85, 1060 360 S 1460 720, 1880 530"/>
+      <path class="scene__ribbon scene__ribbon--three" stroke="url(#ambient-rose-line)" d="M -100 900 C 430 410, 620 760, 980 170 S 1520 520, 1810 70"/>
+    </svg>
+    <canvas id="ambient-particles" class="ambient-particles" aria-hidden="true"></canvas>
+  </div>
   <div class="shell">
     <div class="topline">Empoderadas · Espaço de Beleza</div>
     <header class="hero">
       <span class="hero__ornament" aria-hidden="true"></span>
       <div class="logo-frame">
-        <div class="logo-frame__paper">
+        <span class="logo-frame__aura" aria-hidden="true"></span><div class="logo-frame__paper">
           <img src="https://xn--espaoempoderadas-fpb.my.canva.site/_assets/media/73197b566b8f3f0024553dd1ca2663fa.png" width="800" height="800" alt="Logo original Empoderadas Espaço de Beleza" fetchpriority="high">
         </div>
       </div>
@@ -219,6 +277,87 @@ body::before{content:"";pointer-events:none;position:fixed;inset:0;background-im
       clearTimeout(toastTimer);
       toastTimer=setTimeout(()=>toast.classList.remove('show'),2600);
     });
+
+    // Atmosfera progressiva: Canvas 2D limitado a 26 fps; sem dependências e pausado em segundo plano.
+    (function initAtmosphere(){
+      const motion=window.matchMedia('(prefers-reduced-motion: reduce)');
+      const canvas=document.getElementById('ambient-particles');
+      const scene=document.querySelector('.scene');
+      if(!canvas || !scene || motion.matches)return;
+      const ctx=canvas.getContext('2d',{alpha:true});
+      if(!ctx){canvas.style.display='none';return;}
+      const isMobile=window.matchMedia('(max-width:600px)').matches;
+      const count=isMobile?17:32;
+      let width=0,height=0,dpr=1,particles=[],running=true,lastDraw=0,lastScrollFrame=0,raf=0;
+      const palette=[[254,219,190],[245,185,190],[244,206,173],[232,167,196]];
+      function seed(){
+        return {x:Math.random()*width,y:Math.random()*height,
+          radius:.45+Math.random()*1.65,speed:.065+Math.random()*.18,
+          drift:(Math.random()-.5)*.15,twinkle:Math.random()*Math.PI*2,
+          phase:Math.random()*Math.PI*2,color:palette[Math.floor(Math.random()*palette.length)]};
+      }
+      function resize(){
+        width=Math.max(1,innerWidth);height=Math.max(1,innerHeight);
+        dpr=Math.min(devicePixelRatio||1,1.5);
+        canvas.width=Math.round(width*dpr);canvas.height=Math.round(height*dpr);
+        ctx.setTransform(dpr,0,0,dpr,0,0);
+        particles=Array.from({length:count},seed);
+      }
+      function render(now){
+        raf=0;
+        if(!running)return;
+        if(now-lastDraw < 38){raf=requestAnimationFrame(render);return;}
+        const step=Math.min(2,(now-(lastDraw||now))/38);
+        lastDraw=now;
+        ctx.clearRect(0,0,width,height);
+        for(let i=0;i<particles.length;i++){
+          const p=particles[i];
+          p.y-=p.speed*step;
+          p.x+=(p.drift+Math.sin(now*.00037+p.phase)*.055)*step;
+          if(p.y < -8){p.y=height+8;p.x=Math.random()*width;}
+          if(p.x < -8)p.x=width+8;
+          if(p.x > width+8)p.x=-8;
+          const pulse=.63+.37*Math.sin(now*.0012+p.twinkle);
+          const alpha=(.2+pulse*.35)*(isMobile?.8:1);
+          const [r,g,b]=p.color;
+          ctx.fillStyle='rgba('+r+','+g+','+b+','+alpha.toFixed(3)+')';
+          ctx.beginPath();ctx.arc(p.x,p.y,p.radius,0,Math.PI*2);ctx.fill();
+          if(p.radius>1.7 && pulse>.86){
+            ctx.strokeStyle='rgba('+r+','+g+','+b+','+(alpha*.48).toFixed(3)+')';
+            ctx.lineWidth=.5;ctx.beginPath();
+            ctx.moveTo(p.x-3.3,p.y);ctx.lineTo(p.x+3.3,p.y);
+            ctx.moveTo(p.x,p.y-3.3);ctx.lineTo(p.x,p.y+3.3);ctx.stroke();
+          }
+        }
+        raf=requestAnimationFrame(render);
+      }
+      function start(){
+        if(running && !raf){lastDraw=0;raf=requestAnimationFrame(render);}
+      }
+      function onVisibility(){
+        running=!document.hidden && !motion.matches;
+        if(running)start();
+        else {if(raf)cancelAnimationFrame(raf);raf=0;}
+      }
+      function onResize(){resize();}
+      function onScroll(){
+        if(lastScrollFrame || !running)return;
+        lastScrollFrame=requestAnimationFrame(()=>{
+          const scroll=Math.max(0,scrollY||0);
+          const max=Math.max(1,document.documentElement.scrollHeight-innerHeight);
+          const progress=Math.min(1,scroll/max);
+          scene.style.setProperty('--scroll-wash-y',(Math.min(85,scroll*.13)).toFixed(1)+'px');
+          scene.style.setProperty('--scroll-wash-opacity',(.55+progress*.28).toFixed(3));
+          lastScrollFrame=0;
+        });
+      }
+      resize();start();onScroll();
+      document.addEventListener('visibilitychange',onVisibility);
+      window.addEventListener('resize',onResize,{passive:true});
+      window.addEventListener('scroll',onScroll,{passive:true});
+      if(motion.addEventListener)motion.addEventListener('change',onVisibility);
+    })();
+
     // Desktop: iluminação responsiva ao ponteiro; toque mobile mantém navegação nativa.
     if(window.matchMedia('(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference)').matches){
       document.querySelectorAll('.person-card').forEach(card=>{
